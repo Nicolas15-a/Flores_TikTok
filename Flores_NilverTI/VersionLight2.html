@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margarita Animada Realista</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #87CEEB;
+            overflow: hidden;
+        }
+        .flower-container {
+            position: relative;
+            width: 200px;
+            height: 300px;
+        }
+        .stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 150px;
+            background-color: #228B22;
+            transform-origin: bottom center;
+        }
+        .flower {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .center {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        .petals {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            transform: translate(-50%, -50%);
+        }
+        .petal {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: bottom center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background-color: #32CD32;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: center left;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-30px); }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-30px); }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-30px); }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-30px); }
+        .petal:nth-child(5) { transform: rotate(180deg) translateY(-30px); }
+        .petal:nth-child(6) { transform: rotate(225deg) translateY(-30px); }
+        .petal:nth-child(7) { transform: rotate(270deg) translateY(-30px); }
+        .petal:nth-child(8) { transform: rotate(315deg) translateY(-30px); }
+
+        .leaf:nth-child(1) { top: 100px; left: -20px; transform: rotate(-30deg); }
+        .leaf:nth-child(2) { top: 130px; right: -20px; transform: rotate(150deg); }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .flower-container {
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes flutter {
+            0%, 100% { transform: rotate(var(--rotate)) translateY(-30px); }
+            50% { transform: rotate(calc(var(--rotate) + 5deg)) translateY(-32px); }
+        }
+
+        .petal {
+            animation: flutter 3s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .petal:nth-child(1) { --rotate: 0deg; --delay: 0; }
+        .petal:nth-child(2) { --rotate: 45deg; --delay: 1; }
+        .petal:nth-child(3) { --rotate: 90deg; --delay: 2; }
+        .petal:nth-child(4) { --rotate: 135deg; --delay: 3; }
+        .petal:nth-child(5) { --rotate: 180deg; --delay: 4; }
+        .petal:nth-child(6) { --rotate: 225deg; --delay: 5; }
+        .petal:nth-child(7) { --rotate: 270deg; --delay: 6; }
+        .petal:nth-child(8) { --rotate: 315deg; --delay: 7; }
+    </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="stem"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="flower">
+            <div class="petals">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+            </div>
+            <div class="center"></div>
+        </div>
+    </div>
+</body>
+</html>
